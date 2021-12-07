@@ -1,0 +1,10 @@
+extends template/main
+
+block variables
+	- var title = 'Home page'
+
+block content
+	include ./general-sections/header
+	main.page-wrapper
+		| page content
+	include ./general-sections/footer

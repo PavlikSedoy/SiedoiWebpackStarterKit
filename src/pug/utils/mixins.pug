@@ -1,0 +1,36 @@
+- var currentStatusDir = ''
+
+//- HEADER---------
+mixin logo(parentClass)
+	a(href="/" class=parentClass + " logo")
+		picture
+			img.logo__img(src="/assets/images/header-logo/header-logo.png" alt="logo alt")
+//- End logo
+
+mixin nav(parentClass, navArr)
+	nav(class=parentClass + ' nav')
+		ul.nav__list
+			each navItem in navArr
+				li.nav__item
+					a.nav__link(href= navItem.link)= navItem.name
+			//- End loop
+//- End nav
+//- END HEADER------
+
+//- Sprites
+mixin icon(page, name)
+	svg
+		use(xlink:href= currentStatusDir + "/assets/svg/" + page + "-sprite.svg#" + name)
+//- End sprites
+
+//- Checkbox
+mixin customCheck-label(size, parentClass, id, name, label)
+	div(class=parentClass +" custom-check custom-check--with-label custom-check--" + size + "")
+		.custom-check__field-wr
+			input.custom-check__field(id= id, type="checkbox", name= name)
+			.custom-check__customize
+				//- include ../../assets/svg/check.svg
+		//- End field
+		if label !== false
+			label.custom-check__label(for= id)= label
+	//- End check item
